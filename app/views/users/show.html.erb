@@ -2,10 +2,16 @@
 <table>
   <tbody>
     <tr>
+      <th><%= attachment_image_tag @user, :profile_image, format: "jpeg", fallback: "no_image.jpg", size: "130x130" %></th>
+    </tr>
+    <tr>
       <th>name <%= @user.name %></th>
     </tr>
     <tr>
       <th>introduction <%= @user.introduction %></th>
     </tr>
+    <% if @user.id == current_user.id %>
+      <th><%= link_to "編集", edit_user_path(@user) %></th>
+    <% end %>
   </tbody>
 </table>
